@@ -1,15 +1,17 @@
-# Enable mod_rewrite for URL rewriting
-RewriteEngine On
+# Enable mod_rewrite for URL rewriting (only if available)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
 
-# Handle directory requests - redirect to index.php with folder parameter
-RewriteCond %{REQUEST_FILENAME} -d
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^(.*)$ index.php?folder=$1 [L,QSA]
+    # Handle directory requests - redirect to index.php with folder parameter
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^(.*)$ index.php?folder=$1 [L,QSA]
 
-# Handle file requests - if file doesn't exist, fallback to index.php
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [L,QSA]
+    # Handle file requests - if file doesn't exist, fallback to index.php
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [L,QSA]
+</IfModule>
 
 # Fallback resource (alternative approach for servers without mod_rewrite)
 FallbackResource index.php
