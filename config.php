@@ -85,6 +85,9 @@ $HIDDEN_FILES = array(
     'desktop.ini'
 );
 
+// Hide all files that start with a dot (hidden files)
+$HIDE_DOT_FILES = true;
+
 // Folder names to hide (case-insensitive)
 $HIDDEN_FOLDERS = array(
     '.git',

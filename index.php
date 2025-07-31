@@ -39,9 +39,14 @@ if (strpos($real_current, $real_base) !== 0) {
 
 // Function to check if file/folder should be hidden
 function shouldHide($name, $is_dir = false) {
-    global $HIDDEN_EXTENSIONS, $HIDDEN_FILES, $HIDDEN_FOLDERS;
+    global $HIDDEN_EXTENSIONS, $HIDDEN_FILES, $HIDDEN_FOLDERS, $HIDE_DOT_FILES;
     
     $lower_name = strtolower($name);
+    
+    // Check if dot files should be hidden
+    if ($HIDE_DOT_FILES && $name[0] === '.') {
+        return true;
+    }
     
     if ($is_dir) {
         return in_array($lower_name, array_map('strtolower', $HIDDEN_FOLDERS));

@@ -48,3 +48,9 @@
     Order allow,deny
     Allow from all
 </Files>
+
+# Prevent access to dot files (hidden files)
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
