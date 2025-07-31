@@ -12,11 +12,32 @@ A lightweight PHP application that replaces Apache's `Options +Indexes` function
 - **Parent directory links** for quick navigation
 - **Mobile-friendly** responsive design
 
+
+
+## A quick test
+
+You can do a very simple test of this by going into your `htdocs` folder and checking
+this repository out:
+
+    cd (wherever)
+    git clone https://github.com/csev/htaccess-indexes
+    cd htaccess-indexes
+    chmod 644 .htaccess
+
+Then navigate to the folder on your web site in a browser - You should see a browser listing like
+
+https://www.dr-chuck.com/htaccess-indexes/
+
 ## Installation
 
-1. Upload `index.php`, `config.php`, and `.htaccess` to your web directory
+1. Upload or copy `index.php`, `config.php`, and `.htaccess` to the web directory you want to publish
 2. Ensure your web server has PHP enabled
 3. The application will automatically start working
+
+Different web servers will have different rules about `.htaccess` you might need to fix permissions
+to `644`.
+
+    chmod 644 .htaccess
 
 ## Configuration
 
