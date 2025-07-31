@@ -52,9 +52,12 @@ Edit `config.php` to customize the behavior:
 
 ## Security Note
 
-**Important**: Configuring files as "hidden" in `config.php` only hides them from the folder listings displayed by this application. The underlying files will still be served by Apache if accessed directly via URL. **Do not store sensitive files in this directory** - the hiding feature is for convenience only and does not provide security protection.
+**Important**: Configuring files as "hidden" in `config.php` only hides them from the folder listings displayed by this application. The underlying files will still be served by Apache if accessed directly via URL. **Do not store sensitive files in this directory** - the hiding feature is for "convenience" only and does not provide security protection.
 
 For example, if you hide `secret.txt` in the configuration, it won't appear in the folder listing, but it can still be accessed directly at `https://yoursite.com/secret.txt`.
+
+This is an example of [security through obscurity](https://en.wikipedia.org/wiki/Security_through_obscurity) - simply hiding hiding information in a user interface while it can
+still be accessed through an underlying mechaism.  The lesson is (again): **Do not store sensitive files in this directory**
 
 ## Requirements
 

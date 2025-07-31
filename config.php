@@ -45,4 +45,10 @@ $PAGE_TITLE = 'File Browser';
 
 // Enable breadcrumb navigation (true/false)
 $SHOW_BREADCRUMBS = true;
+
+// Show GitHub repository link (true/false)
+$SHOW_GITHUB_LINK = true;
+
+// GitHub repository URL (leave empty to hide the link)
+$GITHUB_REPO_URL = 'https://github.com/csev/htaccess-indexes';
 ?> 

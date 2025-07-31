@@ -141,6 +141,7 @@ $breadcrumbs = buildBreadcrumbs($current_path);
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             overflow: hidden;
+            margin-bottom: 60px;
         }
         .header {
             background: #2c3e50;
@@ -254,6 +255,27 @@ $breadcrumbs = buildBreadcrumbs($current_path);
         .nav-link:hover {
             text-decoration: underline;
         }
+        .github-link {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #eee;
+            background: #f8f9fa;
+            z-index: 1000;
+        }
+        .github-link a {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .github-link a:hover {
+            color: #495057;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -318,6 +340,14 @@ $breadcrumbs = buildBreadcrumbs($current_path);
             </ul>
             <?php endif; ?>
         </div>
+        
+        <?php if ($SHOW_GITHUB_LINK && !empty($GITHUB_REPO_URL)): ?>
+        <div class="github-link">
+            <a href="<?php echo htmlspecialchars($GITHUB_REPO_URL); ?>" target="_blank" rel="noopener noreferrer">
+                📦 This Application is available on GitHub
+            </a>
+        </div>
+        <?php endif; ?>
     </div>
 </body>
 </html> 
