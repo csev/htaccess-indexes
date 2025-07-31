@@ -21,31 +21,8 @@ FallbackResource index.php
     Header always set X-XSS-Protection "1; mode=block"
 </IfModule>
 
-# Hide documentation files from direct web access
-<Files "DESIGN.md">
-    Order allow,deny
-    Deny from all
-</Files>
-
-<Files "README.md">
-    Order allow,deny
-    Deny from all
-</Files>
-
-# Hide configuration file
+# Prevent access to sensitive files
 <Files "config.php">
-    Order allow,deny
-    Deny from all
-</Files>
-
-# Hide .htaccess file itself
-<Files ".htaccess">
-    Order allow,deny
-    Deny from all
-</Files>
-
-# Hide .gitignore file
-<Files ".gitignore">
     Order allow,deny
     Deny from all
 </Files>
