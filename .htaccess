@@ -14,7 +14,9 @@
 </IfModule>
 
 # Fallback resource (alternative approach for servers without mod_rewrite)
-FallbackResource index.php
+<IfModule !mod_rewrite.c>
+    FallbackResource index.php
+</IfModule>
 
 # Security headers
 <IfModule mod_headers.c>
@@ -27,6 +29,18 @@ FallbackResource index.php
 <Files "config.php">
     Order allow,deny
     Deny from all
+</Files>
+
+# Prevent access to potentially dangerous file types (security measure)
+<FilesMatch "\.(js|php3|php4|php5|php7|php8|phtml|phar|inc|pl|py|rb|sh|bash|exe|com|bat|cmd|vbs|ps1|jar|war|ear|class|so|dll|dylib|bin|msi|app|deb|rpm|pkg|apk|ipa)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Allow index.php specifically (needed for the application to work)
+<Files "index.php">
+    Order allow,deny
+    Allow from all
 </Files>
 
 # Enable compression for better performance

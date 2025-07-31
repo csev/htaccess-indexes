@@ -5,11 +5,63 @@
 
 // File extensions to hide from the listing
 $HIDDEN_EXTENSIONS = array(
+    // PHP and web files
     '.php',
+    '.php3',
+    '.php4',
+    '.php5',
+    '.php7',
+    '.php8',
+    '.phtml',
+    '.phar',
+    '.inc',
     '.htaccess',
     '.gitignore',
-    '.DS_Store',
-    '.config.php'
+    '.config.php',
+    
+    // Scripting languages
+    '.js',
+    '.pl',
+    '.py',
+    '.rb',
+    '.sh',
+    '.bash',
+    
+    // Executables and binaries
+    '.exe',
+    '.com',
+    '.bat',
+    '.cmd',
+    '.vbs',
+    '.ps1',
+    '.jar',
+    '.war',
+    '.ear',
+    '.class',
+    '.so',
+    '.dll',
+    '.dylib',
+    '.bin',
+    '.msi',
+    '.app',
+    '.deb',
+    '.rpm',
+    '.pkg',
+    '.apk',
+    '.ipa',
+    
+    // Temporary and system files
+    '.swp',
+    '.swo',
+    '.tmp',
+    '.temp',
+    '.bak',
+    '.backup',
+    '.orig',
+    '.rej',
+    '.log',
+    '.cache',
+    '.DS_Store'
 );
 
 // File names to hide (case-insensitive)
@@ -17,7 +69,20 @@ $HIDDEN_FILES = array(
     'index.php',
     'config.php',
     'thumbs.db',
-    '.htaccess'
+    '.htaccess',
+    '*.swp',
+    '*.swo',
+    '*.tmp',
+    '*.temp',
+    '*.bak',
+    '*.backup',
+    '*.orig',
+    '*.rej',
+    '*.log',
+    '*.cache',
+    '.DS_Store',
+    'Thumbs.db',
+    'desktop.ini'
 );
 
 // Folder names to hide (case-insensitive)
