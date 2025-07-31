@@ -2,19 +2,7 @@
 
 A lightweight PHP application that replaces Apache's `Options +Indexes` functionality for browsing folders and files through a web interface.
 
-## Features
-
-- **Clean, modern interface** with responsive design
-- **Security-focused** with directory traversal protection
-- **Configurable hiding** of files and folders
-- **Breadcrumb navigation** for easy folder traversal
-- **File information** display (size, modification date)
-- **Parent directory links** for quick navigation
-- **Mobile-friendly** responsive design
-
-
-
-## A quick test
+## Quick start
 
 You can do a very simple test of this by going into your `htdocs` folder and checking
 this repository out:
@@ -84,7 +72,17 @@ still be accessed through an underlying mechaism.  The lesson is (again): **Do n
 
 - PHP 7.0 or higher
 - Web server with PHP support
-- Apache with mod_rewrite (for .htaccess fallback)
+- Apache with mod_rewrite or .htaccess fallback
+
+## Features
+
+- **Clean, modern interface** with responsive design
+- **Security-focused** with directory traversal protection
+- **Configurable hiding** of files and folders
+- **Breadcrumb navigation** for easy folder traversal
+- **File information** display (size, modification date)
+- **Parent directory links** for quick navigation
+- **Mobile-friendly** responsive design
 
 ## License
 
