@@ -39,6 +39,29 @@ Edit `config.php` to customize the behavior:
 - `$SHOW_FILE_DATES`: Whether to display modification dates
 - `$SHOW_BREADCRUMBS`: Whether to show breadcrumb navigation
 - `$PAGE_TITLE`: Custom page title
+- `$HOME_URL`: URL for the home icon (leave empty for current directory)
+- `$HOME_OPEN_IN_NEW_TAB`: Whether the home icon opens in a new tab (true/false)
+- `$HOME_HIDE`: Whether to hide the home icon completely (true/false)
+
+### Local Configuration Overrides
+
+You can create a `config.local.php` file to override settings without modifying the main `config.php` file. This is useful for:
+
+- Environment-specific settings (development, staging, production)
+- Keeping sensitive configuration out of version control
+- Multiple deployments with different settings
+
+**Example `config.local.php`:**
+```php
+<?php
+// Local configuration overrides
+$PASSWORD_PROTECTION_ENABLED = true;
+$SITE_PASSWORD = 'my-secure-password';
+$HOME_URL = 'https://example.com';
+$PAGE_TITLE = 'My File Browser';
+```
+
+**Note:** `config.local.php` is automatically included in `.gitignore` to prevent accidentally committing local settings.
 
 ## Password Protection
 

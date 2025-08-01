@@ -31,8 +31,8 @@
     Deny from all
 </Files>
 
-# Prevent access to sensitive files
-<Files "config.php">
+# Prevent access to local configuration files
+<Files "config.local.php">
     Order allow,deny
     Deny from all
 </Files>

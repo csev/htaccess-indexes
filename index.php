@@ -292,11 +292,23 @@ $breadcrumbs = buildBreadcrumbs($current_path);
             background: #2c3e50;
             color: white;
             padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
         .header h1 {
             margin: 0;
             font-size: 24px;
             font-weight: 300;
+        }
+        .home-icon {
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: opacity 0.2s;
+        }
+        .home-icon:hover {
+            opacity: 0.8;
         }
         .breadcrumbs {
             background: #ecf0f1;
@@ -427,6 +439,13 @@ $breadcrumbs = buildBreadcrumbs($current_path);
     <div class="container">
         <div class="header">
             <h1><?php echo htmlspecialchars($PAGE_TITLE); ?></h1>
+            <?php if (!$HOME_HIDE): ?>
+                <?php if (!empty($HOME_URL)): ?>
+                    <a href="<?php echo htmlspecialchars($HOME_URL); ?>" class="home-icon" title="Go to Home"<?php echo $HOME_OPEN_IN_NEW_TAB ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>🏠</a>
+                <?php else: ?>
+                    <a href="<?php echo htmlspecialchars($_SERVER['REQUEST_URI']); ?>" class="home-icon" title="Go to Root Directory"<?php echo $HOME_OPEN_IN_NEW_TAB ? ' target="_blank" rel="noopener noreferrer"' : ''; ?>>🏠</a>
+                <?php endif; ?>
+            <?php endif; ?>
         </div>
         
         <?php if ($SHOW_BREADCRUMBS && !empty($breadcrumbs)): ?>

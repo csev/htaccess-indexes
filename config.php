@@ -6,6 +6,15 @@
 // Page title
 $PAGE_TITLE = 'File Browser';
 
+// Home URL for the home icon in the header (leave empty to use current directory)
+$HOME_URL = '';
+
+// Whether the home icon should open in a new tab (true/false)
+$HOME_OPEN_IN_NEW_TAB = false;
+
+// Whether to hide the home icon completely (true/false)
+$HOME_HIDE = false;
+
 // Show GitHub repository link (true/false)
 $SHOW_GITHUB_LINK = true;
 
@@ -132,4 +141,9 @@ $HIDDEN_EXTENSIONS = array(
     '.cache',
     '.DS_Store'
 );
+
+// Include local configuration overrides if file exists
+if (file_exists(__DIR__ . '/config.local.php')) {
+    require_once __DIR__ . '/config.local.php';
+}
 
