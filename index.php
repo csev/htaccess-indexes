@@ -26,7 +26,10 @@ if ($PASSWORD_PROTECTION_ENABLED) {
             // Set authentication cookie
             $cookie_hash = hash('sha256', $SITE_PASSWORD . 'salt');
             setcookie($AUTH_COOKIE_NAME, $cookie_hash, time() + $AUTH_COOKIE_EXPIRY, '/', '', true, true);
-            $is_authenticated = true;
+            
+            // Redirect to the same page to prevent form resubmission
+            header('Location: ' . $_SERVER['REQUEST_URI']);
+            exit;
         } else {
             $login_error = 'Invalid password. Please try again.';
         }
