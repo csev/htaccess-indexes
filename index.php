@@ -50,8 +50,9 @@ if ($PASSWORD_PROTECTION_ENABLED) {
             color: #333;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
+            padding-top: 10vh;
         }
         .login-container {
             background: white;
