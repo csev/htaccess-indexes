@@ -32,7 +32,7 @@ $HIDE_DOT_FILES = true;
 
 // Password Protection Settings
 // Enable password protection (true/false)
-$PASSWORD_PROTECTION_ENABLED = true;
+$PASSWORD_PROTECTION_ENABLED = false;
 
 // The password users must enter to access the site
 $SITE_PASSWORD = '42';
