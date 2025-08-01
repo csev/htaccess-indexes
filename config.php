@@ -30,6 +30,19 @@ $DATE_FORMAT = 'Y-m-d H:i:s';
 // Hide all files that start with a dot (hidden files)
 $HIDE_DOT_FILES = true;
 
+// Password Protection Settings
+// Enable password protection (true/false)
+$PASSWORD_PROTECTION_ENABLED = false;
+
+// The password users must enter to access the site
+$SITE_PASSWORD = 'your-secure-password-here';
+
+// Cookie name for storing authentication
+$AUTH_COOKIE_NAME = 'htaccess_auth';
+
+// Cookie expiration time in seconds (2 weeks = 14 * 24 * 60 * 60)
+$AUTH_COOKIE_EXPIRY = 1209600;
+
 // Folder names to hide (case-insensitive)
 $HIDDEN_FOLDERS = array(
     '.git',

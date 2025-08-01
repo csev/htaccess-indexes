@@ -7,6 +7,145 @@
 // Load configuration
 require_once 'config.php';
 
+// Password Protection Logic
+if ($PASSWORD_PROTECTION_ENABLED) {
+    // Check if user is already authenticated via cookie
+    $is_authenticated = false;
+    if (isset($_COOKIE[$AUTH_COOKIE_NAME])) {
+        $cookie_value = $_COOKIE[$AUTH_COOKIE_NAME];
+        // Simple hash verification - in production, use more secure methods
+        if ($cookie_value === hash('sha256', $SITE_PASSWORD . 'salt')) {
+            $is_authenticated = true;
+        }
+    }
+    
+    // Handle login form submission
+    if (isset($_POST['password']) && !$is_authenticated) {
+        $submitted_password = $_POST['password'];
+        if ($submitted_password === $SITE_PASSWORD) {
+            // Set authentication cookie
+            $cookie_hash = hash('sha256', $SITE_PASSWORD . 'salt');
+            setcookie($AUTH_COOKIE_NAME, $cookie_hash, time() + $AUTH_COOKIE_EXPIRY, '/', '', true, true);
+            $is_authenticated = true;
+        } else {
+            $login_error = 'Invalid password. Please try again.';
+        }
+    }
+    
+    // If not authenticated, show login form
+    if (!$is_authenticated) {
+        ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - <?php echo htmlspecialchars($PAGE_TITLE); ?></title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .login-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            max-width: 400px;
+            width: 100%;
+        }
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .login-header h1 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 24px;
+            font-weight: 300;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        .form-group input[type="password"]:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .submit-btn:hover {
+            background: #2980b9;
+        }
+        .error-message {
+            color: #e74c3c;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: #fdf2f2;
+            border-radius: 4px;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1><?php echo htmlspecialchars($PAGE_TITLE); ?></h1>
+            <p>Please enter the password to access this directory.</p>
+        </div>
+        
+        <?php if (isset($login_error)): ?>
+        <div class="error-message">
+            <?php echo htmlspecialchars($login_error); ?>
+        </div>
+        <?php endif; ?>
+        
+        <form method="post">
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required autofocus>
+            </div>
+            <button type="submit" class="submit-btn">Login</button>
+        </form>
+    </div>
+</body>
+</html>
+        <?php
+        exit;
+    }
+}
+
 // Get current folder from URL parameter
 $current_folder = isset($_GET['folder']) ? $_GET['folder'] : '';
 $current_path = $current_folder;

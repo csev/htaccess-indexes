@@ -1,6 +1,7 @@
 # htaccess-indexes
 
-A lightweight PHP application that replaces Apache's `Options +Indexes` functionality for browsing folders and files through a web interface.
+A lightweight PHP application that replaces Apache's `Options +Indexes` functionality
+in `.htaccess` for browsing folders and files through a web interface with a much nicer user interface and some decent
 
 ## Quick start
 
@@ -39,6 +40,30 @@ Edit `config.php` to customize the behavior:
 - `$SHOW_BREADCRUMBS`: Whether to show breadcrumb navigation
 - `$PAGE_TITLE`: Custom page title
 
+## Password Protection
+
+The application includes optional cookie-based password protection. To enable it:
+
+1. **Enable password protection**: Set `$PASSWORD_PROTECTION_ENABLED = true;` in `config.php`
+2. **Set a password**: Change `$SITE_PASSWORD` to your desired password
+3. **Customize settings** (optional):
+   - `$AUTH_COOKIE_NAME`: Name of the authentication cookie (default: 'htaccess_auth')
+   - `$AUTH_COOKIE_EXPIRY`: How long the cookie lasts in seconds (default: 2 weeks)
+
+### How it works
+
+- When password protection is enabled, users will see a login form on their first visit
+- After entering the correct password, a secure cookie is set that lasts for 2 weeks
+- Users won't be prompted for the password again until the cookie expires
+- The cookie is HTTP-only and secure (HTTPS only) for enhanced security
+
+### Security considerations
+
+- The password is stored in plain text in `config.php` - ensure this file is not publicly accessible
+- Cookies are set with secure flags (HTTP-only and secure) to prevent XSS and man-in-the-middle attacks
+- The authentication uses a simple hash-based verification - for production use, consider implementing more robust security measures
+- Remember that this is still basic authentication - for highly sensitive content, consider using proper web server authentication
+
 ## Usage
 
 - **Browse folders**: Click on folder names to navigate into them
@@ -58,6 +83,7 @@ Edit `config.php` to customize the behavior:
 - Path validation to prevent access outside the web root
 - Hidden file/folder filtering
 - Input sanitization and output escaping
+- Optional cookie-based password protection
 
 ## Security Note
 
@@ -83,6 +109,7 @@ still be accessed through an underlying mechaism.  The lesson is (again): **Do n
 - **File information** display (size, modification date)
 - **Parent directory links** for quick navigation
 - **Mobile-friendly** responsive design
+- **Optional password protection** with cookie-based authentication
 
 ## License
 
