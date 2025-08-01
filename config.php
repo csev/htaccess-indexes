@@ -32,10 +32,10 @@ $HIDE_DOT_FILES = true;
 
 // Password Protection Settings
 // Enable password protection (true/false)
-$PASSWORD_PROTECTION_ENABLED = false;
+$PASSWORD_PROTECTION_ENABLED = true;
 
 // The password users must enter to access the site
-$SITE_PASSWORD = 'your-secure-password-here';
+$SITE_PASSWORD = '42';
 
 // Cookie name for storing authentication
 $AUTH_COOKIE_NAME = 'htaccess_auth';
