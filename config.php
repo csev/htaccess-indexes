@@ -133,5 +133,3 @@ $HIDDEN_EXTENSIONS = array(
     '.DS_Store'
 );
 
-
-?> 

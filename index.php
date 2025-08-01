@@ -25,7 +25,7 @@ if ($PASSWORD_PROTECTION_ENABLED) {
         if ($submitted_password === $SITE_PASSWORD) {
             // Set authentication cookie
             $cookie_hash = hash('sha256', $SITE_PASSWORD . 'salt');
-            setcookie($AUTH_COOKIE_NAME, $cookie_hash, time() + $AUTH_COOKIE_EXPIRY, '/', '', false, true);
+            setcookie($AUTH_COOKIE_NAME, $cookie_hash, time() + $AUTH_COOKIE_EXPIRY, '/', '', true, true);
             $is_authenticated = true;
         } else {
             $login_error = 'Invalid password. Please try again.';
@@ -50,9 +50,8 @@ if ($PASSWORD_PROTECTION_ENABLED) {
             color: #333;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             min-height: 100vh;
-            padding-top: 15vh;
         }
         .login-container {
             background: white;
